@@ -12,22 +12,19 @@ function Task(title, desc, prio, date, done)
 
 function publicAddTask(title, desc, prio, date, done, callback)
 {
-    console.log("publicAddTask called");
     let task = new Task(title, desc, prio, date, done);
     db.insert(task, function(err, newDoc){
-        console.log("    insert");
         if(callback){
             callback(err, newDoc);
         }
     });
-    console.log("  publicAddTask end");
 }
 
 
 function publicGet(id, callback)
 {   db.findOne({ _id: id }, function (err, doc) {
-    callback( err, doc);
-});
+        callback( err, doc);
+    });
 }
 
 function publicAll(callback)

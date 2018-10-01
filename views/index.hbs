@@ -1,9 +1,8 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-
 <menu>
-    <a class="btn" href="/add_task">Create new Node</a>
+    <a class="btn" href="/task">Create new Node</a>
     <button type="button">By finish Date</button>
     <button type="button">By create Date</button>
     <button type="button">By importance</button>
@@ -12,19 +11,21 @@
 </menu>
 <div id="list">
     <!-- for each call other template  task_list  -->
+    {{#each tasks}}
     <div class="task-entry">
         <div>
-            in a month
-            Einkaufen/Title
-            Rating/Wichtigkeit
+            {{_id}}
+            {{date}}
+            {{title}}
+            {{prio}}
         </div>
         <div>
             <label><input type="checkbox" name="vehicle2" value="Car"> Finished</label>
             <textarea readonly>
-                Apfel (Beschreibung)
-                Karotte
+                {{desc}}
             </textarea>
         </div>
         <button type="button">Edit</button>
     </div>
+    {{/each}}
 </div>
