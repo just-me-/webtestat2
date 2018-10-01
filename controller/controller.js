@@ -32,7 +32,9 @@ module.exports.showTask = function (req, res) {
 
 module.exports.showAllTasks = function (req, res) {
     tasks.all( function(err, docs) {
+        // docs.dark_mode = true;
         res.render('all_task', docs); //iwie so? kein plan
+        // // res.render('index', { title: 'Overview', dark_mode: true });
     });
 };
 

@@ -1,0 +1,22 @@
+body {
+  background-color: #10303D;
+  color: #ffffff;
+}
+
+
+button, .btn {
+  color: #fff;
+  background-color: #06429B;
+  border-color: #333;
+
+  /* specials... */
+  min-width: 145px;
+  text-decoration: none;
+}
+
+button:hover,
+.btn:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}

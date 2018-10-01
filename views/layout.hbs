@@ -3,6 +3,9 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    {{#if dark_mode}}
+        <link rel='stylesheet' href='/stylesheets/dark_theme.css' />
+    {{/if}}
   </head>
   <body>
     {{{body}}}

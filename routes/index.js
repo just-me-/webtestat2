@@ -10,7 +10,6 @@ router.get('/task/', tasks.registerTask);
 router.get('/task/:id/', tasks.showTask);
 router.post("/task", tasks.createTask);
 
-
 module.exports = router;
 
 
