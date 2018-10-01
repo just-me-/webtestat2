@@ -1,48 +1,33 @@
 const Datastore = require('nedb');
-const db = new Datastore({ filename: './data/order.db', autoload: true });
+const db = new Datastore({ filename: './data/tasks.db', autoload: true });
 
-
-
-
-
-
-
-/*
-
-Vorlage aus dbVorlage:
-
-function Order(pizzaName, orderedBy)
+function Task(title, desc, prio, date, done)
 {
-    this.orderedBy = orderedBy;
-    this.pizzaName = pizzaName;
-    this.orderDate = new Date();
-    this.state = "OK";
+    this.title = title;
+    this.desc = desc;
+    this.prio = prio;
+    this.date = date;
+    this.done = done;
 }
 
-
-function publicAddOrder(pizzaName, orderedBy, callback)
+function publicAddTask(title, desc, prio, date, done, callback)
 {
-    console.log("  publicAddOrder start");
-    let order = new Order(pizzaName, orderedBy);
-    db.insert(order, function(err, newDoc){
+    console.log("publicAddTask called");
+    let task = new Task(title, desc, prio, date, done);
+    db.insert(task, function(err, newDoc){
         console.log("    insert");
         if(callback){
             callback(err, newDoc);
         }
     });
-    console.log("  publicAddOrder end");
+    console.log("  publicAddTask end");
 }
 
-function publicRemove(id, callback) {
-    db.update({_id: id}, {$set: {"state": "DELETED"}}, {returnUpdatedDocs:true}, function (err, numDocs, doc) {
-        callback(err, doc);
-    });
-}
 
 function publicGet(id, callback)
 {   db.findOne({ _id: id }, function (err, doc) {
-        callback( err, doc);
-    });
+    callback( err, doc);
+});
 }
 
 function publicAll(callback)
@@ -52,6 +37,6 @@ function publicAll(callback)
     });
 }
 
-module.exports = {add : publicAddOrder, delete : publicRemove, get : publicGet, all : publicAll};
+module.exports = {add : publicAddTask, get : publicGet, all : publicAll};
 
-*/
+

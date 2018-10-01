@@ -1,3 +1,31 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<p>Bla task hbs file Die ID ist: {{id}}</p>
+
+<h1>{{action}} a new task</h1>
+
+<form method="post" action="/task">
+<table style="border:0; border-collapse: collapse; width:100%">
+    <tr>
+        <td width="20%"><label for="title">Title:</label></td>
+        <td width="80%"><input type="text" name="title" id="title" value="{{title}}"></td>
+    </tr>
+    <tr>
+        <td width="20%"><label for="desc">Description:</label></td>
+        <td width="80%"><textarea rows="3" name="desc" id="desc">{{desc}}</textarea></td>
+    </tr>
+    <tr>
+        <td width="20%"><label for="prio">Priority:</label></td>
+        <td width="80%"><input type="range" min="1" max="5" name="prio" id="prio" value="{{prio}}"></td>
+    </tr>
+    <tr>
+        <td width="20%"><label for="due">Due to:</label></td>
+        <td width="80%"><input type="date" name="due" id="due" value="{{due}}"></td>
+    </tr>
+    <tr>
+        <td width="20%"></td>
+        <td width="80%"><input type="checkbox" name="done" id="done" value="done"> <label for="done">Done !</label></td>
+    </tr>
+    <tr>
+        <td width="20%"></td>
+        <td width="80%"><button type="submit">Send</button><button type="clear">Clear</button></td>
+    </tr>
+</table>
+</form>
