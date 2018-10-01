@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="62db8d13-afd2-4667-b4b9-dcf7257d9f53" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
     </list>
-=======
-    <list default="true" id="62db8d13-afd2-4667-b4b9-dcf7257d9f53" name="Default" comment="Aufgabenbeschrieb added" />
->>>>>>> 50e5e59a347f4ecdeca295183095a9cd3ca1c71a
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -20,11 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-=======
     <leaf>
->>>>>>> 50e5e59a347f4ecdeca295183095a9cd3ca1c71a
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -213,12 +205,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538382128348</updated>
-<<<<<<< HEAD
       <workItem from="1538382129691" duration="384000" />
       <workItem from="1538382898329" duration="280000" />
-=======
-      <workItem from="1538382129691" duration="875000" />
->>>>>>> 50e5e59a347f4ecdeca295183095a9cd3ca1c71a
     </task>
     <task id="LOCAL-00001" summary="Initial Setup">
       <created>1538382488862</created>
@@ -231,11 +219,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
     <option name="totallyTimeSpent" value="664000" />
-=======
-    <option name="totallyTimeSpent" value="875000" />
->>>>>>> 50e5e59a347f4ecdeca295183095a9cd3ca1c71a
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="822" extended-state="6" />
