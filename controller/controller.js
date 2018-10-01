@@ -1,6 +1,41 @@
 const tasks = require("../services/tasks.js");
 
 
+module.exports.showIndex = function (re, res) {
+    res.render('index', { title: 'Overview' });
+};
+
+module.exports.registerTask = function (req, res) {
+        res.render('add_task', { title: 'NeEw Task Add View' })
+};
+
+module.exports.createTask = function (req, res) {
+    console.log("creating Task...");
+    tasks.add(req.body.title, req.body.desc, req.body.prio, req.body.date, req.body.done, function (err, doc) {
+        console.log("      callback start");
+        res.redirect(`/task/${doc._id}`); //redirect und doc._id müsste stimmen oda?
+    });
+    console.log("createTask end");
+};
+
+module.exports.showTask = function (req, res) {
+    tasks.get(req.params.id, function (err, task) {
+        if (task) {
+            res.render('task', task); //iwie so?
+        } else {
+            res.end("Blöda cheib öppis gschids igeh!!")
+        }
+
+
+    });
+};
+
+module.exports.showAllTasks = function (req, res) {
+    tasks.all( function(err, docs) {
+        res.render('all_task', docs); //iwie so? kein plan
+    });
+};
+
 
 /*
 Vorlage:

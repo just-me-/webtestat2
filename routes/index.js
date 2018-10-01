@@ -2,6 +2,20 @@ var express = require('express');
 var router = express.Router();
 const tasks = require('../controller/controller.js');
 
+
+/* GET home page. */
+router.get('/', tasks.showAllTasks);    //index zeigt alle task an, oder gibt es eine separate Indexpage? [tasks.showIndex]
+router.get('/all', tasks.showAllTasks); //<--ist dann obsolete
+router.get('/task/', tasks.registerTask);
+router.get('/task/:id/', tasks.showTask);
+router.post("/task", tasks.createTask);
+
+
+module.exports = router;
+
+
+
+
 /*
 //////////////////////////////*
 
@@ -23,26 +37,3 @@ module.exports = router;
 
 */////////////////////////////////////
 
-
-
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Overview' });
-});
-
-router.get('/task/', function(req, res, next) {
-    res.render('add_task', { title: 'NEw Task Add View' });
-});
-
-router.get('/task/:id/', function(req, res, next) {
-    res.render('task', { action: 'View',
-        title:req.title,
-        desc:req.desc,
-        priority:req.priority,
-        due:req.due });
-});
-
-router.post("/task", tasks.createTask);
-
-module.exports = router;
