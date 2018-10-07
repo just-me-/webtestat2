@@ -1,12 +1,11 @@
 const tasks = require("../services/tasks.js");
 
-module.exports.showIndex = function (re, res) {
-    let dark_mode = true; // 2do via cookie/session...
+module.exports.showIndex = function (req, res) {
     tasks.all(function (err, tasks) {
         res.render('index', {
             title: 'Overview',
             tasks: tasks,
-            dark_mode: true
+            dark_mode: (req.userSettings.darkmode ? true : undefined)
         });
     });
 };

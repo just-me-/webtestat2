@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,6 +9,28 @@ var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 
 var app = express();
+
+// session
+const sessionUserSettings = (req, res, next) => {
+    // default Wert oder aktueller Wert von der Session lesen
+    const userSettings = req.session.userSettings || {orderBy: 'default', orderDirection: -1};
+    const {orderBy, orderDirection, darkmode} = req.query;
+
+    if (orderBy) {
+        userSettings.orderBy = orderBy;
+    }
+    if (orderDirection) {
+        userSettings.orderDirection = orderDirection;
+    }
+    if (darkmode) {
+        userSettings.darkmode = darkmode;
+    }
+    req.userSettings = req.session.userSettings = userSettings;
+
+    next();
+};
+app.use(session({secret: 'casduichakghfewezrfinasdcvjkadfhsuilfuzihfioda', resave: false, saveUninitialized: true}));
+app.use(sessionUserSettings);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,7 +61,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
 
 const hostname = '127.0.0.1';
 const port = 3001;

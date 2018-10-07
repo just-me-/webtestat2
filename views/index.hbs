@@ -6,7 +6,12 @@
     <button type="button">By finish Date</button>
     <button type="button">By create Date</button>
     <button type="button">By importance</button>
-    <button type="button">Style Switcher</button>
+    {{#if dark_mode}}
+        <a class="btn" href="/?darkmode=0">Style Switcher (lightmode)</a>
+    {{else}}
+        <a class="btn" href="/?darkmode=1">Style Switcher (darkmode)</a>
+    {{/if}}
+
     <button type="button">Fertige verbergen</button>
 </menu>
 <div id="list">
