@@ -1,5 +1,5 @@
 const Datastore = require('nedb');
-const db = new Datastore({ filename: './data/tasks.db', autoload: true });
+const db = new Datastore({ filename: './data/tasks.db', autoload: true, timestampData: true });  //timestampData adds created field automatically.
 
 function Task(title, desc, prio, date, done)
 {
@@ -12,6 +12,10 @@ function Task(title, desc, prio, date, done)
 
 function publicAddTask(title, desc, prio, date, done, callback)
 {
+    //wenn das Done-Checkbox unchecked ist, wird es einfach nicht übertragen, drum:
+    if (done === undefined) {
+        done = false;
+    }
     let task = new Task(title, desc, prio, date, done);
     db.insert(task, function(err, newDoc){
         if(callback){
@@ -21,6 +25,10 @@ function publicAddTask(title, desc, prio, date, done, callback)
 }
 
 function publicEditTask(id, title, desc, prio, date, done, callback){
+
+    if (done === undefined) {
+        done = false;
+    }
 
     db.findOne({ _id: id }, function (err, doc) {  //eigentlich optional, das document zuerst zu suchen.
 
@@ -57,11 +65,17 @@ function publicRemove(id, callback) {
 }
 
 
-function publicAll(callback)
+function publicAll(config, callback)
 {
-    db.find({}, function (err, docs) {
-        callback( err, docs);
-    });
+    //getting filter in right format:
+    let filter = null;
+    if(config.filter === 'done') {
+        filter = { done: false };    //TODO: bisschen untested aber so halb tuts zum Teil wenn man die url selbst eingibt.
+    }
+
+    orderByObj = {};
+    orderByObj[config.order] = config.sorting;           //die zeile ist ziemlich ahrdcore, sollte man ev noch verstehen, warum as klappt (ich hab keine ahnung).
+    db.find(filter).sort(orderByObj).exec(callback);
 }
 
 module.exports = {

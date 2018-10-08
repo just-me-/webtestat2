@@ -1,11 +1,15 @@
 const tasks = require("../services/tasks.js");
+const configurator = require("../services/configurator.js");
 
 module.exports.showIndex = function (req, res) {
-    tasks.all(function (err, tasks) {
+    let config = configurator(req, res);  //gets config from cookie and/or url '?' arguments
+
+    console.log("======~~~~~~~~~~~~~~~~CONFIG ELEMENT IN CONTROLLER BEFORE SHOW INDEX CALL:::::::::\n", config);
+    tasks.all(config, function (err, tasks) {
         res.render('index', {
             title: 'Overview',
             tasks: tasks,
-            dark_mode: (req.userSettings.darkmode ? true : undefined)
+            darkmode: config.darkmode  //TODO sorting order (ascending descending) müsste man hier auch übergeben und ob der Filter eingestellt ist und das index.hbs entsprechend anpassen
         });
     });
 };
