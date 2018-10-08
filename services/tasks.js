@@ -20,12 +20,42 @@ function publicAddTask(title, desc, prio, date, done, callback)
     });
 }
 
+function publicEditTask(id, title, desc, prio, date, done, callback){
+
+    db.findOne({ _id: id }, function (err, doc) {  //eigentlich optional, das document zuerst zu suchen.
+
+        if (doc) {
+            db.update({_id: id}, {$set: {
+                    "title":title,
+                    "desc":desc,
+                    "prio":prio,
+                    "date":date,
+                    "done":done
+                }
+            }, {returnUpdatedDocs:true}, function (err, numDocs, doc) {
+                callback(err, doc);
+            });
+        } else {
+            console.log("3rr0r - task to be edited was not f0u|/|tttt!!! Scheisse, was?")
+        }
+
+    });
+}
 
 function publicGet(id, callback)
 {   db.findOne({ _id: id }, function (err, doc) {
         callback( err, doc);
     });
 }
+
+
+//gets messy otherwise
+function publicRemove(id, callback) {
+    db.remove({_id: id}, function (err, numDocs, doc) {
+        callback(err, doc);
+    });
+}
+
 
 function publicAll(callback)
 {
@@ -34,6 +64,11 @@ function publicAll(callback)
     });
 }
 
-module.exports = {add : publicAddTask, get : publicGet, all : publicAll};
+module.exports = {
+    add : publicAddTask,
+    delete: publicRemove,
+    edit: publicEditTask,
+    get : publicGet,
+    all : publicAll};
 
 

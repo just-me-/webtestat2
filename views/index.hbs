@@ -19,18 +19,37 @@
     {{#each tasks}}
     <div class="task-entry">
         <div>
-            {{_id}}
-            {{date}}
-            {{title}}
-            {{prio}}
+            <p>Task ID:{{_id}}</p>
+            <p>Task Title: {{title}}</p>
+            <p>Due to:{{date}}</p>
+            <p>Prio:{{prio}}</p>
+
+            <!--Falls zuviel Zeit könnte man so ein Times iwas basteln  (hbs removed):
+            /*<p>Priority: times prio<span class="priosymbol">*</span>/times</p>-->
+            <!--Handlebars.registerHelper('times', function(n, block) {-->
+            <!--var accum = '';-->
+            <!--for(var i = 0; i < n; ++i)-->
+            <!--accum += block.fn(i);-->
+            <!--return accum;-->
+            <!--});-->
+            <!--*/-->
         </div>
         <div>
-            <label><input type="checkbox" name="vehicle2" value="Car"> Finished</label>
+            <p><label><input type="checkbox" name="done" {{#if done}}checked{{/if}} disabled> Finished</label></p>
+
             <textarea readonly>
                 {{desc}}
             </textarea>
         </div>
-        <button type="button">Edit</button>
+
+        <form method="get" action="/task/{{_id}}">
+            <button type='submit'class="btn">View / Edit</button>
+        </form>
+        <form action='/task/{{_id}}' method='post'>
+            <input type='hidden' name='_method'  value='delete'>
+            <button type='submit'class="btn">Delete</button>
+        </form>
+        <hr>
     </div>
     {{/each}}
 </div>
