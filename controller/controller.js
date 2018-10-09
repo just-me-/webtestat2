@@ -16,7 +16,7 @@ module.exports.showIndex = function (req, res) {
 
 module.exports.registerTask = function (req, res) {
     let config = configurator(req, res);
-    res.render('add_task', {title:"Add a new Task", config: config})
+    res.render('task', {title:"Add a new Task", config: config})
 };
 
 module.exports.createTask = function (req, res) {
@@ -41,7 +41,7 @@ module.exports.showTask = function (req, res) {
             };
             console.log("=====task========\n", task, "=========\n");
             console.log("=====data========\n", data, "=========\n");
-            res.render('edit_task', data);
+            res.render('task', data);
         } else {
             res.end("Bloeda Cheib, oeppis gschids igeh!!")
         }
