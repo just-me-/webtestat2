@@ -2,20 +2,21 @@ const tasks = require("../services/tasks.js");
 const configurator = require("../services/configurator.js");
 
 module.exports.showIndex = function (req, res) {
-    let config = configurator(req, res);  //gets config from cookie and/or url '?' arguments
+    let config = configurator(req, res);  //gets config from cookie and/or url arguments
 
     console.log("======~~~~~~~~~~~~~~~~CONFIG ELEMENT IN CONTROLLER BEFORE SHOW INDEX CALL:::::::::\n", config);
     tasks.all(config, function (err, tasks) {
         res.render('index', {
             title: 'Overview',
             tasks: tasks,
-            darkmode: config.darkmode  //TODO sorting order (ascending descending) müsste man hier auch übergeben und ob der Filter eingestellt ist und das index.hbs entsprechend anpassen
+            config: config
         });
     });
 };
 
 module.exports.registerTask = function (req, res) {
-        res.render('add_task', {title:"Add a new Task"})
+    let config = configurator(req, res);
+    res.render('add_task', {title:"Add a new Task", config: config})
 };
 
 module.exports.createTask = function (req, res) {
@@ -27,6 +28,7 @@ module.exports.createTask = function (req, res) {
 module.exports.showTask = function (req, res) {
     tasks.get(req.params.id, function (err, task) {
         if (task) {
+            let config = configurator(req, res);
             let data = {
                 title: "View and edit your task",
                 id: req.params.id,
@@ -34,7 +36,8 @@ module.exports.showTask = function (req, res) {
                 desc: task.desc,
                 prio: task.prio,
                 due: task.date,
-                done: task.done
+                done: task.done,
+                config: config
             };
             console.log("=====task========\n", task, "=========\n");
             console.log("=====data========\n", data, "=========\n");

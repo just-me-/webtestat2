@@ -15,15 +15,18 @@ function configurator(req, res) {
     console.log("Config was initialized as follows:");
     console.log(configuration);
 
-    //Alle Parameter aus REquest-URL abgreifen und setzen:
+    //Alle Parameter aus Request-URL abgreifen und setzen:
     if(req.query.darkmode !== undefined){
-        configuration.darkmode = req.query.darkmode;
+        if(req.query.darkmode === true || req.query.darkmode === "true")
+            configuration.darkmode = true;
+        else
+            configuration.darkmode = false;
     }
 
     if(req.query.order !== undefined){
         configuration.order = req.query.order;
 
-        // Reiehnfolge definieren: 1 = ascending, -1 = descending im internen key sorting
+        // Reihenfolge definieren: 1 = ascending, -1 = descending im internen key sorting
         if (configuration.reverse) {
             configuration.sorting = -1;
         } else {
