@@ -1,35 +1,36 @@
 {{#if id}}
-    <h1>Here you can edit a new task</h1>
+    <h1>Edit your task</h1>
     <form method="post" action="/task/{{id}}">
 {{else}}
-    <h1>Here you can add a new task</h1>
+    <h1>Add a new task</h1>
     <form method="post" action="/task/">
 {{/if}}
 
-<table style="border:0; border-collapse: collapse; width:100%">
-    <tr>
-        <td width="20%"><label for="tasktitle">Title:</label></td>
-        <td width="80%"><input type="text" name="tasktitle" id="tasktitle" value="{{tasktitle}}"></td>
-    </tr>
-    <tr>
-        <td width="20%"><label for="desc">Description:</label></td>
-        <td width="80%"><textarea rows="3" name="desc" id="desc">{{desc}}</textarea></td>
-    </tr>
-    <tr>
-        <td width="20%"><label for="prio">Priority:</label></td>
-        <td width="80%"><input type="range" min="1" max="5" name="prio" id="prio" value="{{prio}}"></td>
-    </tr>
-    <tr>
-        <td width="20%"><label for="due">Due to:</label></td>
-        <td width="80%"><input type="date" name="due" id="due" value="{{due}}"></td>
-    </tr>
-    <tr>
-        <td width="20%"></td>
-        <td width="80%"><input type="checkbox" name="done" id="done" value="true" {{#if done}}checked{{/if}}> <label for="done">Done !</label></td>
-    </tr>
-    <tr>
-        <td width="20%"></td>
-        <td width="80%"><button type="submit" class="btn">Send</button><button type="clear" class="btn">Clear</button></td>
-    </tr>
-</table>
-</form>
+
+<div class="input-group">
+    <label for="tasktitle">Title:</label>
+    <input type="text" name="tasktitle" id="tasktitle" value="{{tasktitle}}">
+</div>
+
+<div class="input-group">
+    <label for="desc">Description:</label>
+    <textarea rows="3" name="desc" id="desc">{{desc}}</textarea>
+</div>
+
+<div class="input-group">
+    <label for="prio">Priority:</label>
+    <input type="range" min="1" max="5" name="prio" id="prio" value="{{prio}}">
+</div>
+
+<div class="input-group">
+    <label for="due">Due to:</label>
+    <input type="date" name="due" id="due" value="{{due}}">
+</div>
+
+<div class="input-group left-space">
+    <input type="checkbox" name="done" id="done" value="true" {{#if done}}checked{{/if}}> <label for="done">Done !</label>
+</div>
+<div class="input-group left-space">
+    <button type="submit" class="btn small-on-mobile">Send</button>
+    <button type="reset" class="btn small-on-mobile">Clear</button>
+</div>

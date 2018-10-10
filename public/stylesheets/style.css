@@ -73,3 +73,38 @@ button:hover,
   background-color: #e6e6e6;
   border-color: #adadad;
 }
+
+.input-group {
+  margin-bottom: 0.8rem;
+}
+
+@media screen and (min-width: 601px) {
+  .input-group {
+    display: flex;
+  }
+  .input-group  label{
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+    padding-right: 2em;
+  }
+  .input-group input,
+  .input-group textarea {
+    max-width: 80%;
+    display: inline-block;
+  }
+  .input-group.left-space {
+    margin-left: 20%;
+  }
+  .input-group.left-space input[type=checkbox] {
+     margin: 0.25em 0.2em 0 0;
+  }
+  .input-group.left-space label {
+    text-align: left;
+  }
+}
+@media screen and (max-width: 600px) {
+  .btn.small-on-mobile {
+    min-width: initial;
+  }
+}
