@@ -3,6 +3,10 @@ body {
   color: #ffffff;
 }
 
+input, textarea {
+  color: #e7e7e7;
+  background-color: #164152;
+}
 
 button, .btn {
   color: #fff;

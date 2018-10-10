@@ -50,9 +50,7 @@
         <div>
             <p><label><input type="checkbox" name="done" {{#if done}}checked{{/if}} disabled> Finished</label></p>
 
-            <textarea readonly>
-                {{desc}}
-            </textarea>
+            <textarea readonly>{{desc}}</textarea>
         </div>
 
         <form method="get" action="/task/{{_id}}">

@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/normalize_v8.css' />
     {{#if config.darkmode}}
         <link rel='stylesheet' href='/stylesheets/dark_theme.css' />
     {{/if}}
+      <script src="/javascripts/autosize.min.js"></script>
+      <script src="/javascripts/jquery.min.js"></script>
+      <script src="/javascripts/front.js"></script>
+
   </head>
+
   <body>
     {{{body}}}
   </body>
