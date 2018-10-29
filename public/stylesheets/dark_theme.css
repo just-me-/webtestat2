@@ -18,6 +18,10 @@ button, .btn {
   text-decoration: none;
 }
 
+.btn.active {
+  background-color: #00B7FF;
+}
+
 button:hover,
 .btn:hover {
   color: #333;

@@ -5,19 +5,27 @@
         <a class="btn" href="/task">Create new Node</a>
         <!--//sort-->
 
-        <a href="./?order=date{{#notreverseandequal config.reverse config.order 'date'}}&reverse=1{{/notreverseandequal}}"      class="btn">By due date</a>
-        <a href="./?order=createdAt{{#notreverseandequal config.reverse config.order 'createdAt'}}&reverse=1{{/notreverseandequal}}" class="btn">By creation date</a>
-        <a href="./?order=prio{{#notreverseandequal config.reverse config.order 'prio'}}&reverse=1{{/notreverseandequal}}"      class="btn">By priority</a>
+        <a href="./?order=date{{#notreverseandequal config.reverse config.order 'date'}}&reverse=1{{/notreverseandequal}}"
+           class="btn {{#equal config.order 'date'}}active{{/equal}}">By due date</a>
+        <a href="./?order=createdAt{{#notreverseandequal config.reverse config.order 'createdAt'}}&reverse=1{{/notreverseandequal}}"
+           class="btn {{#equal config.order 'createdAt'}}active{{/equal}}">By creation date</a>
+        <a href="./?order=prio{{#notreverseandequal config.reverse config.order 'prio'}}&reverse=1{{/notreverseandequal}}"
+           class="btn {{#equal config.order 'prio'}}active{{/equal}}">By priority</a>
+
+
+        <!--Wahlweise folgend auch mit Klasse "active" arbeiten und den Button mit "Dark Mode on" bbeschriften -->
+        <!-- dann ist der Button gefärbt, wenn der Darkmode on ist und sonst nicht. Filter analog.
+        Man kanns aber auch einfahc mit anderem Text lösen, also Hide und Show. Oder beides. Mir Wurst xD -->
 
         <!--Filter-->
         {{#equal config.filter 'none'}}
             <a href="./?filter=done" class="btn">Hide completed</a>
         {{else}}
-            <a href="./?filter=none" class="btn">Show all</a>
+            <a href="./?filter=none" class="btn active">Show all</a>
         {{/equal}}
 
         {{#if config.darkmode}}
-            <a class="btn" href="/?darkmode=false">Style Switcher (lightmode)</a>
+            <a class="btn active" href="/?darkmode=false">Style Switcher (lightmode)</a>
         {{else}}
             <a class="btn" href="/?darkmode=true">Style Switcher (darkmode)</a>
         {{/if}}
