@@ -41,8 +41,22 @@ app.use(sessionUserSettings);
 const exphbs  = require('express-handlebars');
 app.engine('.hbs', exphbs({
     extname: '.hbs',
+    layoutsDir: path.join(__dirname, "views"),
+    defaultLayout: 'layout',
     helpers: require('./util/helpers.js')
 }));
+
+
+//Alternative:
+// var handlebars = require('express-handlebars').create({
+//     layoutsDir: path.join(__dirname, "views"),
+//     partialsDir: path.join(__dirname, "views"),
+//     defaultLayout: 'layout',
+//     helpers: require('./util/helpers.js'),
+//     extname: 'hbs'
+// });
+// app.engine('hbs', handlebars.engine);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
