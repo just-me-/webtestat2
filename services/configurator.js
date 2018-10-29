@@ -7,7 +7,8 @@ function configurator(req, res) {
             darkmode: false,
             filter: 'none',
             order: 'createdAt',
-            reverse: false
+            reverse: 0,
+            sortorder: 1
 
         };
     }
@@ -25,14 +26,20 @@ function configurator(req, res) {
 
     if(req.query.order !== undefined){
         configuration.order = req.query.order;
-
-        // Reihenfolge definieren: 1 = ascending, -1 = descending im internen key sorting
-        if (configuration.reverse) {
-            configuration.sorting = -1;
-        } else {
-            configuration.sorting = 1;
-        }
     }
+
+    if (req.query.reverse !== undefined) {
+        configuration.reverse = req.query.reverse;
+    } else {
+        configuration.reverse = 0;
+    }
+
+    if (configuration.reverse == 1) {
+        configuration.sortorder = -1;   //bisschen unnötig hier zwei variablen, aber ist klarer für den dev (also für mich)
+    } else {
+        configuration.sortorder = 1;
+    }
+
 
     if(req.query.filter !== undefined){
         configuration.filter = req.query.filter;

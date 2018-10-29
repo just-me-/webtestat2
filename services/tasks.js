@@ -74,8 +74,10 @@ function publicAll(config, callback)
     }
 
     orderByObj = {};
-    orderByObj[config.order] = config.sorting;           //die zeile ist ziemlich ahrdcore, sollte man ev noch verstehen, warum as klappt (ich hab keine ahnung).
+    orderByObj[config.order] = config.sortorder;           //die zeile ist ziemlich ahrdcore, sollte man ev noch verstehen, warum as klappt (ich hab keine ahnung).
      db.find(filter).sort(orderByObj).exec(callback);
+
+
     // TODO: exec is no good!!
     /*
     db.find(filter, function (err, docs) {

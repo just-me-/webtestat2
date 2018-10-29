@@ -5,18 +5,33 @@
         <a class="btn" href="/task">Create new Node</a>
         <!--//sort-->
 
-        <!--//TODO: if config.order="bla", dann link zu &reverse=false
-        müsste geringer aufwand sein hinkriegen-->
-        <a href="./?order=date" class="btn">By due date</a>
-        <a href="./?order=createdAt" class="btn">By created date</a>
-        <a href="./?order=prio" class="btn">By priority</a>
+        <!--//TODO: Wenn nach prio sortiert, sind alle buttons dann "sortiere inverted" (wenn zeit is) ->>-->
+
+        {{#equal config.reverse 1}}
+            <a href="./?order=date" class="btn">By due date</a>
+        {{else}}
+            <a href="./?order=date&reverse=1" class="btn">By due date</a>
+        {{/equal}}
+
+        {{#equal config.reverse 1}}
+            <a href="./?order=createdAt" class="btn">By created date</a>
+        {{else}}
+            <a href="./?order=createdAt&reverse=1" class="btn">By created date</a>
+        {{/equal}}
+
+        {{#equal config.reverse 1}}
+            <a href="./?order=prio" class="btn">By priority</a>
+        {{else}}
+            <a href="./?order=prio&reverse=1" class="btn">By priority</a>
+        {{/equal}}
 
         <!--Filter-->
-        {{#if config.filter}}  <!--//TODO-->
-            <a href="./?filter=none" class="btn">Alle anzeigen</a>
-        {{else}}
+        {{#equal config.filter 'none'}}
             <a href="./?filter=done" class="btn">Fertige verbergen</a>
-        {{/if}}
+        {{/equal}}
+        {{#equal config.filter 'done'}}
+            <a href="./?filter=none" class="btn">Show all</a>
+        {{/equal}}
 
         {{#if config.darkmode}}
             <a class="btn" href="/?darkmode=false">Style Switcher (lightmode)</a>

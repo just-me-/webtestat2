@@ -1,6 +1,11 @@
 const tasks = require("../services/tasks.js");
 const configurator = require("../services/configurator.js");
 
+
+
+
+
+
 module.exports.showIndex = function (req, res) {
     let config = configurator(req, res);  //gets config from cookie and/or url arguments
 
