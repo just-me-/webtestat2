@@ -32,7 +32,7 @@
             <p>Task ID:{{_id}}</p>
             <p>Task Title: {{title}}</p>
             <p>Due to:{{date}}</p>
-            <p>Prio: {{#times prio}}<span>&#10030;</span>{{/times}}</p>
+            <p>Prio: <span>{{#times prio}}&#10030;{{/times}}</span></p>
         </div>
         <div>
             <p><label><input type="checkbox" name="done" {{#if done}}checked{{/if}} disabled> Finished</label></p>
