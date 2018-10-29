@@ -32,17 +32,7 @@
             <p>Task ID:{{_id}}</p>
             <p>Task Title: {{title}}</p>
             <p>Due to:{{date}}</p>
-            <p>Prio:{{prio}}</p>
-
-            <!--Falls zuviel Zeit könnte man so ein Times iwas basteln, dass z.b. 3 sterne macht bei prio 3  (hbs removed):
-            /*<p>Priority: times prio<span class="priosymbol">*</span>/times</p>-->
-            <!--Handlebars.registerHelper('times', function(n, block) {-->
-            <!--var accum = '';-->
-            <!--for(var i = 0; i < n; ++i)-->
-            <!--accum += block.fn(i);-->
-            <!--return accum;-->
-            <!--});-->
-            <!--*/-->
+            <p>Prio: {{#times prio}}<span>&#10030;</span>{{/times}}</p>
         </div>
         <div>
             <p><label><input type="checkbox" name="done" {{#if done}}checked{{/if}} disabled> Finished</label></p>
