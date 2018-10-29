@@ -14,7 +14,21 @@ module.exports = {
             return options.fn(this);
         }
     },
-    bar: function(){
-        return "BAR!";
+
+    notreverseandequal: function(reverse, left, right, options) {
+        if (arguments.length <4)
+            throw new Error("Handlebars Helper equal needs 3 parameters");
+
+
+        if( left == right && reverse == 0 ) {
+
+            console.log("::::::::TOM HELPER WAS TRUE::::::::::::",reverse,  left, right)
+            return options.fn(this)
+
+        } else {
+
+            console.log("::::::::TOM HELPER WAS NOT TRUE::::::::::::", reverse, left, right)
+            return options.inverse(this);
+        }
     }
 };

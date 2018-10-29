@@ -10,7 +10,8 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-// session
+// session ---> Done by Cookie!! Yeah!
+/*
 const sessionUserSettings = (req, res, next) => {
     // default Wert oder aktueller Wert von der Session lesen
     const userSettings = req.session.userSettings || {orderBy: 'default', orderDirection: -1};
@@ -29,13 +30,15 @@ const sessionUserSettings = (req, res, next) => {
 
     next();
 };
+
+
 app.use(session({secret: 'casduichakghfewezrfinasdcvjkadfhsuilfuzihfioda', resave: false, saveUninitialized: true}));
 app.use(sessionUserSettings);
 
+*/
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-
-
 const exphbs  = require('express-handlebars');
 app.engine('.hbs', exphbs({
     extname: '.hbs',

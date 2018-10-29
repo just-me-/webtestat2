@@ -31,7 +31,7 @@ function configurator(req, res) {
     if (req.query.reverse !== undefined) {
         configuration.reverse = req.query.reverse;
     } else {
-        configuration.reverse = 0;
+        configuration.reverse = 0;  //reset necessary here because i use two variables
     }
 
     if (configuration.reverse == 1) {
