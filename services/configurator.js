@@ -6,15 +6,12 @@ function configurator(req, res) {
         configuration = {
             darkmode: false,
             filter: 'none',
-            order: 'createdAt',
-            reverse: 0,
+            orderBy: 'createdAt',
+            reverse: false,
             sortorder: 1
 
         };
     }
-
-    console.log("Config was initialized as follows:");
-    console.log(configuration);
 
     //Alle Parameter aus Request-URL abgreifen und setzen:
     if(req.query.darkmode !== undefined){
@@ -24,17 +21,17 @@ function configurator(req, res) {
             configuration.darkmode = false;
     }
 
-    if(req.query.order !== undefined){
-        configuration.order = req.query.order;
+    if(req.query.orderBy !== undefined){
+        configuration.orderBy = req.query.orderBy;
     }
 
     if (req.query.reverse !== undefined) {
         configuration.reverse = req.query.reverse;
     } else {
-        configuration.reverse = 0;  //reset necessary here because i use two variables
+        configuration.reverse = false;  //reset necessary here because i use two variables
     }
 
-    if (configuration.reverse == 1) {
+    if (configuration.reverse) {
         configuration.sortorder = -1;   //bisschen unnötig hier zwei variablen, aber ist klarer für den dev (also für mich)
     } else {
         configuration.sortorder = 1;

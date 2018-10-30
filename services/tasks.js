@@ -1,22 +1,22 @@
 const Datastore = require('nedb');
 const db = new Datastore({ filename: './data/tasks.db', autoload: true, timestampData: true });  //timestampData adds created field automatically.
 
-function Task(title, desc, prio, date, done)
+function Task(title, desc, prio, dueDate, done)
 {
     this.title = title;
     this.desc = desc;
     this.prio = prio;
-    this.date = date;
+    this.dueDate = dueDate;
     this.done = done;
 }
 
-function publicAddTask(title, desc, prio, date, done, callback)
+function publicAddTask(title, desc, prio, dueDate, done, callback)
 {
     //wenn das Done-Checkbox unchecked ist, wird es einfach nicht übertragen, drum:
     if (done === undefined) {
         done = false;
     }
-    let task = new Task(title, desc, prio, date, done);
+    let task = new Task(title, desc, prio, dueDate, done);
     db.insert(task, function(err, newDoc){
         if(callback){
             callback(err, newDoc);
@@ -24,7 +24,7 @@ function publicAddTask(title, desc, prio, date, done, callback)
     });
 }
 
-function publicEditTask(id, title, desc, prio, date, done, callback){
+function publicEditTask(id, title, desc, prio, dueDate, done, callback){
 
     if (done === undefined) {
         done = false;
@@ -37,7 +37,7 @@ function publicEditTask(id, title, desc, prio, date, done, callback){
                     "title":title,
                     "desc":desc,
                     "prio":prio,
-                    "date":date,
+                    "dueDate":dueDate,
                     "done":done
                 }
             }, {returnUpdatedDocs:true}, function (err, numDocs, doc) {
@@ -70,11 +70,11 @@ function publicAll(config, callback)
     //getting filter in right format:
     let filter = null;
     if(config.filter === 'done') {
-        filter = { done: false };    //TODO: bisschen untested aber so halb tuts zum Teil wenn man die url selbst eingibt.
+        filter = { done: false };
     }
 
     orderByObj = {};
-    orderByObj[config.order] = config.sortorder;           //die zeile ist ziemlich ahrdcore, sollte man ev noch verstehen, warum as klappt (ich hab keine ahnung).
+    orderByObj[config.orderBy] = config.sortorder;
      db.find(filter).sort(orderByObj).exec(callback);
 
 

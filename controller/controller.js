@@ -8,8 +8,6 @@ const configurator = require("../services/configurator.js");
 
 module.exports.showIndex = function (req, res) {
     let config = configurator(req, res);  //gets config from cookie and/or url arguments
-
-    console.log("======~~~~~~~~~~~~~~~~CONFIG ELEMENT IN CONTROLLER BEFORE SHOW INDEX CALL:::::::::\n", config);
     tasks.all(config, function (err, tasks) {
         res.render('index', {
             title: 'Overview',
@@ -25,7 +23,7 @@ module.exports.registerTask = function (req, res) {
 };
 
 module.exports.createTask = function (req, res) {
-    tasks.add(req.body.tasktitle, req.body.desc, req.body.prio, req.body.due, req.body.done, function (err, doc) {
+    tasks.add(req.body.tasktitle, req.body.desc, req.body.prio, req.body.dueDate, req.body.done, function (err, doc) {
         res.redirect(`/`);
     });
 };
@@ -40,7 +38,7 @@ module.exports.showTask = function (req, res) {
                 tasktitle: task.title,
                 desc: task.desc,
                 prio: task.prio,
-                due: task.date,
+                dueDate: task.dueDate,
                 done: task.done,
                 config: config
             };
@@ -55,10 +53,7 @@ module.exports.showTask = function (req, res) {
 
 
 module.exports.editTask = function (req, res) {
-
-    console.log("============EDIT TASK AS FOLLOWS=========\n",req.params.id, req.body.tasktitle, req.body.desc, req.body.prio, req.body.due, req.body.done);
-
-    tasks.edit(req.params.id, req.body.tasktitle, req.body.desc, req.body.prio, req.body.due, req.body.done, function (err, doc) {
+    tasks.edit(req.params.id, req.body.tasktitle, req.body.desc, req.body.prio, req.body.dueDate, req.body.done, function (err, doc) {
         res.redirect(`/`);
     });
 };

@@ -10,6 +10,8 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
+//TODO: Due "in 6 hours" field --> Mal noch schauen, scheint mühsam... sonst einfach weglassen
+
 // session ---> Done by Cookie!! Yeah!
 /*
 const sessionUserSettings = (req, res, next) => {

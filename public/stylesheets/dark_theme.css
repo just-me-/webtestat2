@@ -19,7 +19,7 @@ button, .btn {
 }
 
 .btn.active {
-  background-color: #00B7FF;
+  background-color: dodgerblue;
 }
 
 button:hover,
@@ -27,4 +27,13 @@ button:hover,
   color: #333;
   background-color: #e6e6e6;
   border-color: #adadad;
+}
+
+.empty {
+  border: 1px solid darkblue;
+  border-radius: 5px;
+  background: dodgerblue;
+  align-content: center;
+  margin: 2em auto;
+  padding: 0.5em;
 }
