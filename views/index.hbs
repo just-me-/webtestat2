@@ -4,7 +4,7 @@
     <div class="toolbar topbar">
         <a class="btn" href="/task">Create new Node</a>
         {{#if config.darkmode}}
-            <a class="btn active" href="/?darkmode=false">LightMode</a>
+            <a class="btn" href="/?darkmode=false">LightMode</a>
         {{else}}
             <a class="btn" href="/?darkmode=true">DarkMode</a>
         {{/if}}
@@ -22,7 +22,7 @@
         {{#equal config.filter 'none'}}
             <a href="./?filter=done" class="btn">Hide completed</a>
         {{else}}
-            <a href="./?filter=none" class="btn active">Show all</a>
+            <a href="./?filter=none" class="btn">Show all</a>
         {{/equal}}
     </div>
 </menu>

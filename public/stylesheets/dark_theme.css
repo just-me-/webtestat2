@@ -19,21 +19,18 @@ button, .btn {
 }
 
 .btn.active {
-  background-color: dodgerblue;
+  background-color: #0857cc;
+  border-color: #fff;
 }
 
 button:hover,
 .btn:hover {
-  color: #333;
-  background-color: #e6e6e6;
-  border-color: #adadad;
+  color: #fff;
+  background-color: #0a6dff;
+  border-color: #fff;
 }
 
-.empty {
-  border: 1px solid darkblue;
-  border-radius: 5px;
-  background: dodgerblue;
-  align-content: center;
-  margin: 2em auto;
-  padding: 0.5em;
+.msg {
+  border-color: #fff;
+  background: #06429B;
 }

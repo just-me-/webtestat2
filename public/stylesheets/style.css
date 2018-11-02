@@ -14,9 +14,6 @@ menu {
   padding: 0;
   margin: 0;
 }
-a {
-  color: #00B7FF;
-}
 
 input,
 textarea {
@@ -68,7 +65,7 @@ button, .btn { /* from bs */
 }
 
 .btn.active {
-  background-color: #00B7FF;
+  background-color: #ededed;
 }
 
 button:hover,
@@ -82,9 +79,9 @@ button:hover,
   margin-bottom: 0.8rem;
 }
 .msg {
-  border: 1px solid darkblue;
+  border: 1px solid #adadad;
   border-radius: 5px;
-  background: #00B7FF;
+  background: #ededed;
   align-content: center;
   margin: 2em auto;
   padding: 0.5em;
