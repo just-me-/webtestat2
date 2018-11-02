@@ -87,6 +87,12 @@ button:hover,
   padding: 0.5em;
 }
 
+.task-entry {
+  border: 1px solid #e2e2e2;
+  border-radius: 0.5em;
+  padding: 1em 0.5em;
+  margin-top: 1em;
+}
 .task-entry > div {
   display: flex;
   justify-content: space-between;
@@ -170,5 +176,29 @@ button:hover,
   }
   .task-entry form {
     height: auto;
+  }
+}
+@media screen and (max-width: 544px) {
+  .bottombar .btn {
+    width: 100%;
+  }
+
+  .task-entry .status-row {
+    flex-wrap: wrap;
+  }
+  .task-entry .status-row > * {
+    flex-basis: 100%;
+  }
+  .task-entry .btn-group {
+    padding-left: 0;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .task-entry .btn-group .btn {
+    width: 100%;
+  }
+  .task-entry form {
+    flex-basis: 48%;
   }
 }
