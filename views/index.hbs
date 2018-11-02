@@ -1,10 +1,16 @@
 <h1>{{title}}</h1>
 
 <menu>
-    <div class="toolbar">
+    <div class="toolbar topbar">
         <a class="btn" href="/task">Create new Node</a>
+        {{#if config.darkmode}}
+            <a class="btn active" href="/?darkmode=false">LightMode</a>
+        {{else}}
+            <a class="btn" href="/?darkmode=true">DarkMode</a>
+        {{/if}}
+    </div>
+    <div class="toolbar bottombar">
         <!--//sort-->
-
         <a href="./?orderBy=dueDate{{#notreverseandequal config.reverse config.orderBy 'dueDate'}}&reverse=true{{/notreverseandequal}}"
            class="btn {{#equal config.orderBy 'dueDate'}}active{{/equal}}">By due date</a>
         <a href="./?orderBy=createdAt{{#notreverseandequal config.reverse config.orderBy 'createdAt'}}&reverse=true{{/notreverseandequal}}"
@@ -14,46 +20,40 @@
 
         <!--Filter-->
         {{#equal config.filter 'none'}}
-            <a href="./?filter=done" class="btn">
+            <a href="./?filter=done" class="btn">Hide completed</a>
         {{else}}
-            <a href="./?filter=none" class="btn active">
+            <a href="./?filter=none" class="btn active">Show all</a>
         {{/equal}}
-            Hide completed</a>
-
-        {{#if config.darkmode}}
-            <a class="btn active" href="/?darkmode=false">
-        {{else}}
-            <a class="btn" href="/?darkmode=true">
-        {{/if}}
-            Darkmode</a>
     </div>
-
 </menu>
+
 <div id="list">
     <!-- for each call other template  task_list  -->
     {{#each tasks}}
     <div class="task-entry">
-        <div>
-            <p>Task Title: {{title}}</p>
-            <p>Due to:{{dueDate}}, {{#timedistance dueDate}}{{/timedistance}}</p>
-            <p>Prio: <span>{{#times prio}}&#10030;{{/times}}</span></p>
+        <div class="title-row">
+            <div class="time">Due to:{{dueDate}}, {{#timedistance dueDate}}{{/timedistance}}</div>
+            <div class="title">{{title}}</div>
+            <div class="prio"><span>{{#times prio}}&#10030;{{/times}}</span></div>
+            <div class="btn-space"></div>
         </div>
-        <div>
-            <p><label><input type="checkbox" name="done" {{#if done}}checked{{/if}} disabled> Finished</label></p>
-
+        <div class="status-row">
+            <label><input type="checkbox" name="done" {{#if done}}checked{{/if}} disabled> Finished</label>
             <textarea readonly>{{desc}}</textarea>
-        </div>
 
-        <form method="get" action="/task/{{_id}}">
-            <button type='submit'class="btn">View / Edit</button>
-        </form>
-        <form action='/task/{{_id}}' method='post'>
-            <input type='hidden' name='_method'  value='delete'>
-            <button type='submit'class="btn">Delete</button>
-        </form>
+            <div class="btn-group">
+                <form method="get" action="/task/{{_id}}">
+                    <button type='submit'class="btn">Edit</button>
+                </form>
+                <form action='/task/{{_id}}' method='post'>
+                    <input type='hidden' name='_method'  value='delete'>
+                    <button type='submit'class="btn">Delete</button>
+                </form>
+            </div>
+        </div>
         <hr>
     </div>
     {{else}}
-        <div class="task-entry empty">You are up to date! There are no tasks for you.</div>
+        <div class="task-entry msg">You are up to date! There are no tasks for you.</div>
     {{/each}}
 </div>

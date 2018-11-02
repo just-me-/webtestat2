@@ -81,13 +81,65 @@ button:hover,
 .input-group {
   margin-bottom: 0.8rem;
 }
-.empty {
+.msg {
   border: 1px solid darkblue;
   border-radius: 5px;
   background: #00B7FF;
   align-content: center;
   margin: 2em auto;
   padding: 0.5em;
+}
+
+.task-entry > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.task-entry .status-row label {
+  min-width: 80px;
+}
+.task-entry .btn {
+  min-width: 50px;
+  height: 100%;
+  margin: 0;
+}
+.task-entry .time,
+.task-entry label {
+  /*
+  flex-basis: 20%;
+  flex-grow: 1;
+  */
+  flex-basis: 180px;
+}
+.task-entry form {
+  display: inline-block;
+  height: 100%;
+}
+.task-entry .title,
+.task-entry textarea {
+  flex-basis: 40%;
+  flex-grow: 3;
+}
+
+.task-entry .btn-space,
+.task-entry .btn-group {
+  /*
+  flex-basis: 30%;
+  flex-grow: 1;
+  */
+  flex-basis: 120px;
+  padding-left: 10px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+}
+.topbar {
+  justify-content: space-between;
+}
+.bottombar > a:last-of-type {
+  margin-left: auto;
 }
 
 @media screen and (min-width: 601px) {
@@ -109,7 +161,7 @@ button:hover,
     margin-left: 20%;
   }
   .input-group.left-space input[type=checkbox] {
-     margin: 0.25em 0.2em 0 0;
+     margin: 0.25em 0.5em 0 0;
   }
   .input-group.left-space label {
     text-align: left;
@@ -118,5 +170,8 @@ button:hover,
 @media screen and (max-width: 600px) {
   .btn.small-on-mobile {
     min-width: initial;
+  }
+  .task-entry form {
+    height: auto;
   }
 }

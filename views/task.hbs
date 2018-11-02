@@ -24,7 +24,7 @@
 
 <div class="input-group">
     <label for="dueDate">Due to:</label>
-    <input type="date" name="dueDate" id="dueDate" value="{{dueDate}}">
+    <input type="date" name="dueDate" id="dueDate" value="{{dueDate}}" placeholder="DD.MM.YYYY" pattern="[0-9]{2}\.[0-9]{2}\.[0-9]{4}">
 </div>
 
 <div class="input-group left-space">
@@ -32,5 +32,5 @@
 </div>
 <div class="input-group left-space">
     <button type="submit" class="btn small-on-mobile">Send</button>
-    <button type="reset" class="btn small-on-mobile">Clear</button>
+    <button type="reset" class="btn small-on-mobile">Reset</button>
 </div>
