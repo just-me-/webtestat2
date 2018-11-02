@@ -32,7 +32,7 @@
     {{#each tasks}}
     <div class="task-entry">
         <div class="title-row">
-            <div class="time">Due to:{{dueDate}}, {{#timedistance dueDate}}{{/timedistance}}</div>
+            <div class="time">{{#unless done}}{{timedistance dueDate}}{{/unless}}</div>
             <div class="title">{{title}}</div>
             <div class="prio"><span>{{#times prio}}&#10030;{{/times}}</span></div>
             <div class="btn-space"></div>

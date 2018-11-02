@@ -30,10 +30,27 @@ module.exports = {
 
     //TODO oder streeichen ;) die date difference richtig hinzukriegne ist glaubihc noch saumässig mühsam.... ist aktuell NaN meist.
     timedistance: function(date) {
-        let result = date - Date.now();
-        // console.log("HELPEREEEEEEEEEEEEEEEEEEEEEEEEE", result);
-        if (result > 0) {
-            return "in " + result;
+        if(!date) {
+            return "unknown";
+        }
+        const dateNow = new Date();
+        const dateArr = date.split("\.");
+        const dateTo = new Date(dateArr[2], dateArr[1]-1, dateArr[0]);
+        console.log(dateNow, dateTo, "asooooo");
+
+        const diff = dateTo - dateNow.valueOf();
+        console.log("HELPEREEEEEEEEEEEEEEEEEEEEEEEEE", diff);
+        if (diff > 0) {
+            const diffHours = diff/1000/60/60;
+            if(diffHours<=24) {
+                return "in "+Math.round(diffHours)+" hours"
+            } else if(diffHours/24<=7) {
+                return "in "+Math.round(diffHours/24)+" days"
+            } else {
+                return "in "+Math.round(diffHours/(24*7))+" weeks"
+            }
+
+            return "in " + diffHours;
         } else {
             return "expired"
         }
